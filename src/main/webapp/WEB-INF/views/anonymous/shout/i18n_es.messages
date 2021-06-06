@@ -1,6 +1,9 @@
 anonymous.shout.form.label.author = Autor:
 anonymous.shout.form.label.text = Texto:
 anonymous.shout.form.label.info = Información:
+anonymous.shout.form.label.fecha = Fecha:
+anonymous.shout.form.label.money = Dinero:
+anonymous.shout.form.label.flag = Booleano: 
 anonymous.shout.form.button.create = ¡Gritar!
 anonymous.shout.form.button.return = Volver
 
@@ -8,5 +11,6 @@ anonymous.shout.list.label.moment = Momento
 anonymous.shout.list.label.author = Autor
 anonymous.shout.list.label.text = Texto
 anonymous.shout.list.label.info = Información 
+anonymous.shout.list.label.amount = Valor
 
 anonymous.shout.error.umbral-superado = Umbral de palabras consideradas spam superado
