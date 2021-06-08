@@ -51,7 +51,7 @@ public class Shout extends DomainEntity {
 	// Relationships -----------------------------------
 
 	@NotNull
-	@OneToOne
+	@OneToOne(optional=false)
 	@Valid
 	protected XXX xxx;
 }

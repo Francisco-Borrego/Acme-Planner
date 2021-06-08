@@ -17,7 +17,8 @@ public class AnonymousShoutsCreateTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/anonymous/shout/createPositive.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)	
-	public void create(final int recordIndex, final String author, final String text, final String info) {		
+	public void create(final int recordIndex, final String author, final String text, final String info,
+		final String moment, final String amount, final String flag) {	
 		assert !StringHelper.isBlank(author);
 		assert !StringHelper.isBlank(text);
 		
@@ -26,15 +27,21 @@ public class AnonymousShoutsCreateTest extends AcmePlannerTest {
 		super.fillInputBoxIn("author", author);
 		super.fillInputBoxIn("text", text);
 		super.fillInputBoxIn("info", info);
+		super.fillInputBoxIn("xxx.moment", moment);
+		super.fillInputBoxIn("xxx.money", amount);
+		super.fillInputBoxIn("xxx.flag", flag);
 		super.clickOnSubmitButton("Shout!");
 		 
 		super.checkSimplePath("/master/welcome");
 		
-		super.clickOnMenu("Anonymous", "Shout list");	
+		super.clickOnMenu("Anonymous", "Shout list");
 				
 		super.checkColumnHasValue(recordIndex, 1, author);
 		super.checkColumnHasValue(recordIndex, 2, text);
 		super.checkColumnHasValue(recordIndex, 3, info);
+		super.checkColumnHasValue(recordIndex, 5, moment);
+		super.checkColumnHasValue(recordIndex, 6, amount);
+		super.checkColumnHasValue(recordIndex, 7, flag);
 		
 	}
 	
@@ -50,18 +57,20 @@ public class AnonymousShoutsCreateTest extends AcmePlannerTest {
 	@ParameterizedTest
 	@CsvFileSource(resources = "/anonymous/shout/createNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)	
-	public void createNegative(final String author, final String text, final String info) {
+	public void createNegative(final String author, final String text, final String info,
+		final String moment, final String amount, final String flag) {
 		
 		super.navigateHome();
 		super.clickOnMenu("Anonymous", "Create a shout");
 		super.fillInputBoxIn("author", author);
 		super.fillInputBoxIn("text", text);
 		super.fillInputBoxIn("info", info);
+		super.fillInputBoxIn("xxx.moment", moment);
+		super.fillInputBoxIn("xxx.money", amount);
+		super.fillInputBoxIn("xxx.flag", flag);
 		super.clickOnSubmitButton("Shout!");
 		
-		super.checkErrorsExist("author");
-		super.checkErrorsTextAreaExist("text");
-		super.checkErrorsExist("info");
+		super.checkErrorsExist();
 		
 		super.checkSimplePath("/anonymous/shout/create");
 		

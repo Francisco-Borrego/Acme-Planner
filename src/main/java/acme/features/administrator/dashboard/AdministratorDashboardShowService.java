@@ -51,7 +51,9 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		request.unbind(entity, model,
 			"nPrivateTask", "nPublicTask", "nNotFinishedTask", "nFinishedTask", "averageTaskExecutionPeriods",
 			"deviationTaskExecutionPeriods", "minimumTaskExecutionPeriods", "maximumTaskExecutionPeriods",
-			"averageTaskWorkloads", "deviationTaskWorkloads", "minimumTaskWorkloads", "maximumTaskWorkloads");
+			"averageTaskWorkloads", "deviationTaskWorkloads", "minimumTaskWorkloads", "maximumTaskWorkloads",
+//Nuevo
+			"ratio1", "ratio2", "averageSheetsEUR", "averageSheetsUSD", "deviationSheetsEUR", "deviationSheetsUSD");
 	}
 
 	@Override
@@ -74,6 +76,27 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double deviationTaskWorkloads;
 		Double	minimumTaskWorkloads;
 		Double	maximumTaskWorkloads;
+		
+		//------
+		Double ratio1;
+		final Double ratio2;
+		
+		Double averageSheetsEUR;
+		Double averageSheetsUSD;
+		final Double deviationSheetsEUR;
+		final Double deviationSheetsUSD;
+		
+		
+		final Integer totalNumberOfShouts = this.repository.nShouts();
+		final Integer nShoutsAtr4 = this.repository.nShoutsFlag();
+		ratio1 = ((nShoutsAtr4+0.0)/totalNumberOfShouts);
+		
+		ratio2=0.0;
+		
+		averageSheetsEUR=this.repository.averageSheetsByCurrency("EUR");
+		averageSheetsUSD=this.repository.averageSheetsByCurrency("USD");
+		deviationSheetsEUR=this.repository.deviationSheetsByCurrency("EUR");
+		deviationSheetsUSD=this.repository.deviationSheetsByCurrency("USD");
 
 		nPrivateTask = this.repository.nPrivateTask();
 		nPublicTask = this.repository.nPublicTask();
@@ -120,6 +143,14 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationTaskWorkloads(deviationTaskWorkloads);
 		result.setMinimumTaskWorkloads(minimumTaskWorkloads);
 		result.setMaximumTaskWorkloads(maximumTaskWorkloads);
+		
+		//----
+		result.setRatio1(ratio1);
+		result.setRatio2(ratio2);
+		result.setAverageSheetsEUR(averageSheetsEUR);
+		result.setAverageSheetsUSD(averageSheetsUSD);
+		result.setDeviationSheetsEUR(deviationSheetsEUR);
+		result.setDeviationSheetsUSD(deviationSheetsUSD);
 		
 		return result;
 	}

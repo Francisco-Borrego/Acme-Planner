@@ -8,7 +8,7 @@
 	<acme:form-textarea code="anonymous.shout.form.label.text" path="text"/>
 	<acme:form-textbox code="anonymous.shout.form.label.info" path="info"/>
 	
-	<acme:form-textbox code="anonymous.shout.form.label.fecha" path="xxx.date"/>
+	<acme:form-moment code="anonymous.shout.form.label.fecha" path="xxx.moment"/>
 	<acme:form-money code="anonymous.shout.form.label.money" path="xxx.money"/>
 	<acme:form-checkbox code="anonymous.shout.form.label.flag" path="xxx.flag"/>
 	
