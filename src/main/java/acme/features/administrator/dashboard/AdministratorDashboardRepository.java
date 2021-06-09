@@ -18,6 +18,7 @@ import java.util.Date;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import acme.entities.shouts.Shout;
 import acme.entities.tasks.Task;
 import acme.framework.repositories.AbstractRepository;
 
@@ -57,6 +58,18 @@ public interface AdministratorDashboardRepository extends AbstractRepository {
 
 	@Query("select max(t.workload)  from Task t")
 	Double maximumTaskWorkloads();
+	
+	@Query("SELECT s FROM Shout s")
+	Collection<Shout> findAllShout();
+		
+	@Query("SELECT count(s) FROM Shout s WHERE (s.marku.important = true)")
+	Integer shoutsFlaggedAs();
+		
+	@Query("SELECT avg(m.budget.amount) FROM Marku m WHERE (m.budget.currency = ?1)")
+	Double averageSheetCurrency(String currency);
+		
+	@Query("SELECT stddev(m.budget.amount) FROM Marku m WHERE (m.budget.currency = ?1)")
+	Double deviationSheetCurrency(String currency);
 
 	
 }

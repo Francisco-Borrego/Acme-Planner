@@ -10,6 +10,18 @@
 
 administrator.dashboard.form.title.show = Dashboard
 
+administrator.dashboard.form.title.shouts = Shouts and sheets data
+administrator.dashboard.form.label.shouts-flagged-as = Shouts flagged as xxx
+administrator.dashboard.form.result.shouts-flagged-as = Shouts flagged as xxx
+administrator.dashboard.form.label.average-currency-eur = Sheet average currency as EUR
+administrator.dashboard.form.result.average-currency-eur = Sheet average currency as EUR
+administrator.dashboard.form.label.average-currency-usd = Sheet average currency as USD
+administrator.dashboard.form.result.average-currency-usd = Sheet average currency as USD
+administrator.dashboard.form.label.deviation-currency-eur = Sheet deviation currency as EUR
+administrator.dashboard.form.result.deviation-currency-eur = Sheet deviation currency as EUR
+administrator.dashboard.form.label.deviation-currency-usd = Sheet deviation currency as USD
+administrator.dashboard.form.result.deviation-currency-usd = Sheet deviation currency as USD
+
 administrator.dashboard.form.title.general-indicators = General indicators
 administrator.dashboard.form.label.number-task-private =  Number of private tasks 
 administrator.dashboard.form.label.number-task-public =  Number of public tasks 

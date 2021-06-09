@@ -51,7 +51,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		request.unbind(entity, model,
 			"nPrivateTask", "nPublicTask", "nNotFinishedTask", "nFinishedTask", "averageTaskExecutionPeriods",
 			"deviationTaskExecutionPeriods", "minimumTaskExecutionPeriods", "maximumTaskExecutionPeriods",
-			"averageTaskWorkloads", "deviationTaskWorkloads", "minimumTaskWorkloads", "maximumTaskWorkloads");
+			"averageTaskWorkloads", "deviationTaskWorkloads", "minimumTaskWorkloads", "maximumTaskWorkloads", 
+			"shoutsFlaggedAs", "averageSheetCurrencyEUR","averageSheetCurrencyUSD", "deviationSheetCurrencyEUR", "deviationSheetCurrencyUSD");
 	}
 
 	@Override
@@ -61,7 +62,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Date today = new Date(System.currentTimeMillis());
 
 		Dashboard result;
-		Integer nPrivateTask;
+		final Integer nPrivateTask;
 		Integer nPublicTask;
 		Integer nNotFinishedTask;
 		Integer nFinishedTask;
@@ -74,6 +75,21 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		Double deviationTaskWorkloads;
 		Double	minimumTaskWorkloads;
 		Double	maximumTaskWorkloads;
+		
+		final Integer shoutsFlaggedAs;
+		final Double averageSheetCurrencyUSD;
+		final Double averageSheetCurrencyEUR;
+		final Double deviationSheetCurrencyEUR;
+		final Double deviationSheetCurrencyUSD;
+
+		
+		//final Collection<Shout> shouts = this.repository.findAllShout();
+		shoutsFlaggedAs = this.repository.shoutsFlaggedAs();
+		averageSheetCurrencyEUR = this.repository.averageSheetCurrency("EUR");
+		averageSheetCurrencyUSD = this.repository.averageSheetCurrency("USD");
+		deviationSheetCurrencyEUR = this.repository.deviationSheetCurrency("EUR");
+		deviationSheetCurrencyUSD = this.repository.deviationSheetCurrency("USD");
+
 
 		nPrivateTask = this.repository.nPrivateTask();
 		nPublicTask = this.repository.nPublicTask();
@@ -120,6 +136,13 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setDeviationTaskWorkloads(deviationTaskWorkloads);
 		result.setMinimumTaskWorkloads(minimumTaskWorkloads);
 		result.setMaximumTaskWorkloads(maximumTaskWorkloads);
+		
+		result.setShoutsFlaggedAs(shoutsFlaggedAs);
+		result.setAverageSheetCurrencyEUR(averageSheetCurrencyEUR);
+		result.setAverageSheetCurrencyUSD(averageSheetCurrencyUSD);
+		result.setDeviationSheetCurrencyEUR(deviationSheetCurrencyEUR);
+		result.setDeviationSheetCurrencyUSD(deviationSheetCurrencyUSD);
+	
 		
 		return result;
 	}

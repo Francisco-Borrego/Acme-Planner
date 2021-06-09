@@ -17,6 +17,62 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 
 <h2>
+	<acme:message code="administrator.dashboard.form.title.shouts"/>
+</h2>
+
+<table class="table table-sm">	
+	<caption><acme:message code="administrator.dashboard.form.title.shouts"/></caption>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.shouts-flagged-as"/>
+		</th>
+		<td>
+			<acme:print value="${shoutsFlaggedAs}"/> 
+			<acme:message code="administrator.dashboard.form.result.shouts-flagged-as"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.average-currency-eur"/>
+		</th>
+		<td>
+			<acme:print value="${averageSheetCurrencyEUR}"/> 
+			<acme:message code="administrator.dashboard.form.result.average-currency-eur"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.average-currency-usd"/>
+		</th>
+		<td>
+			<acme:print value="${averageSheetCurrencyUSD}"/> 
+			<acme:message code="administrator.dashboard.form.result.average-currency-usd"/>
+		</td>
+	</tr>
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.deviation-currency-eur"/>
+		</th>
+		<td>
+			<acme:print value="${deviationSheetCurrencyEUR}"/> 
+			<acme:message code="administrator.dashboard.form.result.deviation-currency-eur"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.deviation-currency-usd"/>
+		</th>
+		<td>
+			<acme:print value="${deviationSheetCurrencyUSD}"/> 
+			<acme:message code="administrator.dashboard.form.result.deviation-currency-usd"/>
+		</td>
+	</tr>
+	
+</table>
+
+
+<h2>
 	<acme:message code="administrator.dashboard.form.title.general-indicators"/>
 </h2>
 
@@ -30,6 +86,7 @@
 			<acme:print value="${nPrivateTask}"/>
 		</td>
 	</tr>
+	
 	<tr>
 		<th scope="row">
 			<acme:message code="administrator.dashboard.form.label.number-task-public"/>
