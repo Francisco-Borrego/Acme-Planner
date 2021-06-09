@@ -1,0 +1,13 @@
+timestamp,simple-path,time
+2021-06-09 10:11:18.616,/master/welcome,5298
+2021-06-09 10:11:19.03,/master/welcome,345
+2021-06-09 10:11:21.449,/master/sign-in,2283
+2021-06-09 10:11:22.742,/master/welcome,592
+2021-06-09 10:11:25.011,/master/welcome,297
+2021-06-09 10:11:25.728,/master/welcome,594
+2021-06-09 10:11:26.152,/master/welcome,283
+2021-06-09 10:11:26.492,/master/welcome,279
+2021-06-09 10:11:27.827,/anonymous/shout/create,1136
+2021-06-09 10:11:58.55,/master/welcome,277
+2021-06-09 10:11:58.827,/master/welcome,250
+2021-06-09 10:11:59.604,/anonymous/shout/create,592
