@@ -451,12 +451,12 @@ has v</panel_attributes>
       <h>84</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
-XXX
+Dolemites
 --
-+date: String{Pattern("^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$")}
-+moment: Date{NotNull,Temporal(TIMESTMAP), Future}
-+money: Money{NotNull}
-+flag: Boolean{NotNull}</panel_attributes>
++keylem: String{Pattern(“^\w{6}:mmyy:dd$”), unique}
++deadline: Date{NotNull,Temporal(TIMESTMAP), Future}
++budget: Money{NotNull}
++important: Boolean{NotNull}</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

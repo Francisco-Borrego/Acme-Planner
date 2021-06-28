@@ -37,7 +37,7 @@ public class AnonymousShoutListService implements AbstractListService<Anonymous,
 		assert model != null;
 		
 		request.unbind(entity, model, "author", "text", "moment", "info", 
-			"xxx.date", "xxx.moment","xxx.money","xxx.flag");
+			"dolemite.keylem", "dolemite.deadline","dolemite.budget","dolemite.important");
 	}
 	
 	@Override

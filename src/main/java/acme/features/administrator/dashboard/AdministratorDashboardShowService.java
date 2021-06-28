@@ -79,8 +79,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		
 		//------
 		Double ratio1;
-		final Double ratio2;
-		
+		Double ratio2;
 		Double averageSheetsEUR;
 		Double averageSheetsUSD;
 		final Double deviationSheetsEUR;
@@ -90,8 +89,7 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Integer totalNumberOfShouts = this.repository.nShouts();
 		final Integer nShoutsAtr4 = this.repository.nShoutsFlag();
 		ratio1 = ((nShoutsAtr4+0.0)/totalNumberOfShouts);
-		
-		ratio2=0.0;
+		ratio2 = 0.0;
 		
 		averageSheetsEUR=this.repository.averageSheetsByCurrency("EUR");
 		averageSheetsUSD=this.repository.averageSheetsByCurrency("USD");

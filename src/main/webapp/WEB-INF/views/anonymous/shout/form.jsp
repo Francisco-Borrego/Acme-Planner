@@ -8,9 +8,10 @@
 	<acme:form-textarea code="anonymous.shout.form.label.text" path="text"/>
 	<acme:form-textbox code="anonymous.shout.form.label.info" path="info"/>
 	
-	<acme:form-moment code="anonymous.shout.form.label.fecha" path="xxx.moment"/>
-	<acme:form-money code="anonymous.shout.form.label.money" path="xxx.money"/>
-	<acme:form-checkbox code="anonymous.shout.form.label.flag" path="xxx.flag"/>
+	<acme:form-textbox code="anonymous.shout.form.label.keylem" path="dolemite.keylem"/>
+	<acme:form-moment code="anonymous.shout.form.label.deadline" path="dolemite.deadline"/>
+	<acme:form-money code="anonymous.shout.form.label.budget" path="dolemite.budget"/>
+	<acme:form-checkbox code="anonymous.shout.form.label.important" path="dolemite.important"/>
 	
 	<acme:form-submit code="anonymous.shout.form.button.create" action="/anonymous/shout/create"/>
 	<acme:form-return code="anonymous.shout.form.button.return"/>

@@ -32,6 +32,15 @@
 		</td>
 	</tr>
 	
+		<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.ratio2"/>
+		</th>
+		<td>
+			<acme:print value="${ratio2}"/>
+		</td>
+	</tr>
+	
 	<tr>
 		<th scope="row">
 			<acme:message code="administrator.dashboard.form.label.ratio2"/>

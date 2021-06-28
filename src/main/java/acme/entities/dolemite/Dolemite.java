@@ -1,4 +1,4 @@
-package acme.entities.XXX;
+package acme.entities.dolemite;
 
 import java.util.Date;
 
@@ -19,24 +19,23 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class XXX extends DomainEntity{
+public class Dolemite extends DomainEntity{
 
 	protected static final long serialVersionUID = 1L;
 	
 	@Column(unique=true)
-	//@Pattern(regexp = "([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))") -> "YYYY-MM-DD"
-	@Pattern(regexp = "^([0-2][0-9]|(3)[0-1])(\\/)(((0)[0-9])|((1)[0-2]))(\\/)\\d{4}$") //-> "DD/MM/YYYY"
-	protected String date;
+	@Pattern(regexp = "^\\w{6}:(0[1-9]|1[12])\\d{2}:([012]\\d|3[01])$") 
+	protected String keylem;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	@Future
-	protected Date moment;
+	protected Date deadline;
 	
 	@NotNull
 	@Valid
-	protected Money money;
+	protected Money budget;
 	
 	@NotNull
-	protected Boolean flag;
+	protected Boolean important;
 }
