@@ -62,6 +62,15 @@
 	
 	<tr>
 		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.avgSheetsGBP"/>
+		</th>
+		<td>
+			<acme:print value="${avgSheetsGBP}"/>
+		</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">
 			<acme:message code="administrator.dashboard.form.label.devSheetsUSD"/>
 		</th>
 		<td>
@@ -78,7 +87,14 @@
 		</td>
 	</tr>
 	
-	<!-- CC -->
+	<tr>
+		<th scope="row">
+			<acme:message code="administrator.dashboard.form.label.devSheetsGBP"/>
+		</th>
+		<td>
+			<acme:print value="${devSheetsGBP}"/>
+		</td>
+	</tr>
 	
 	<tr>
 		<th scope="row">

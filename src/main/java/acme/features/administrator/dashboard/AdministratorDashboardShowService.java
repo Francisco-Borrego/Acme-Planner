@@ -49,10 +49,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		assert model != null;
 
 		request.unbind(entity, model,
-			"nPrivateTask", "nPublicTask", "nNotFinishedTask", "nFinishedTask", "averageTaskExecutionPeriods",
+			"nPublicTask", "nPrivateTask", "nFinishedTask", "nNotFinishedTask", "averageTaskExecutionPeriods",
 			"deviationTaskExecutionPeriods", "minimumTaskExecutionPeriods", "maximumTaskExecutionPeriods",
 			"averageTaskWorkloads", "deviationTaskWorkloads", "minimumTaskWorkloads", "maximumTaskWorkloads",
-			"ratio1", "ratio2", "avgSheetsUSD", "avgSheetsEUR", "devSheetsUSD", "devSheetsEUR");
+			"ratio1", "ratio2", "avgSheetsUSD", "avgSheetsEUR", "avgSheetsGBP","devSheetsUSD", "devSheetsEUR", "devSheetsGBP");
 	}
 
 	@Override
@@ -62,8 +62,8 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Date today = new Date(System.currentTimeMillis());
 
 		final Dashboard result;
-		Integer nPrivateTask;
 		Integer nPublicTask;
+		Integer nPrivateTask;
 		Integer nNotFinishedTask;
 		Integer nFinishedTask;
 		Double averageTaskExecutionPeriods;
@@ -81,8 +81,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		final Double ratio2;
 		final Double avgSheetsUSD;
 		final Double avgSheetsEUR;
+		final Double avgSheetsGBP;
 		final Double devSheetsUSD;
 		final Double devSheetsEUR;
+		final Double devSheetsGBP;
 
 		nPrivateTask = this.repository.nPrivateTask();
 		nPublicTask = this.repository.nPublicTask();
@@ -116,16 +118,21 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		maximumTaskWorkloads = this.repository.maximumTaskWorkloads();
 		
 		//CC
-		final Integer numShoutsAtributo4OK = this.repository.numShoutsAtributo4();
-		final Integer numShouts = this.repository.numShouts();
-		ratio1=((numShoutsAtributo4OK+0.0)/(numShouts+0.0));
+
 		
-		ratio2=0.0; //FALTA PQ NO SE SABE QUE ATRIBUTO SE PIDE
+		final Integer numShoutsImportant = this.repository.numShoutsImportant();
+		final Integer numShouts = this.repository.numShouts();
+		ratio1=((numShoutsImportant+0.0)/(numShouts+0.0));
+		
+		final Integer numShoutsZeroBudget = this.repository.numShoutsZeroCurrency();
+		ratio2=((numShoutsZeroBudget+0.0)/(numShouts+0.0));
 		
 		avgSheetsUSD = this.repository.avgSheetsByCurrency("USD");
 		avgSheetsEUR = this.repository.avgSheetsByCurrency("EUR");
+		avgSheetsGBP = this.repository.avgSheetsByCurrency("GBP");
 		devSheetsUSD = this.repository.devSheetsByCurrency("USD");
 		devSheetsEUR = this.repository.devSheetsByCurrency("EUR");
+		devSheetsGBP = this.repository.devSheetsByCurrency("GBP");
 		
 		result = new Dashboard();
 		result.setNPrivateTask(nPrivateTask);
@@ -147,8 +154,10 @@ public class AdministratorDashboardShowService implements AbstractShowService<Ad
 		result.setRatio2(ratio2);
 		result.setAvgSheetsUSD(avgSheetsUSD);
 		result.setAvgSheetsEUR(avgSheetsEUR);
+		result.setAvgSheetsGBP(avgSheetsGBP);
 		result.setDevSheetsUSD(devSheetsUSD);
 		result.setDevSheetsEUR(devSheetsEUR);
+		result.setDevSheetsGBP(devSheetsGBP);
 		
 		return result;
 	}

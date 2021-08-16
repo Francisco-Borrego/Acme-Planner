@@ -29,9 +29,11 @@ public class Dashboard implements Serializable {
 	Double 						ratio2;
 	Double 						avgSheetsUSD;
 	Double 						avgSheetsEUR;
+	Double 						avgSheetsGBP;
 	Double 						devSheetsUSD;
 	Double 						devSheetsEUR;
-	
+	Double 						devSheetsGBP;
+
 	
 
 }

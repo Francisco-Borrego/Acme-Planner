@@ -13,14 +13,14 @@ anonymous.shout.list.label.author = Autor
 anonymous.shout.list.label.text = Texto
 anonymous.shout.list.label.info = Información 
 
-anonymous.shout.list.label.atributo1 = Atributo1 
-anonymous.shout.list.label.atributo2 = Atributo2
-anonymous.shout.list.label.atributo3 = Atributo3
-anonymous.shout.list.label.atributo4 = Atributo4 
+anonymous.shout.list.label.atributo1 = Nombre
+anonymous.shout.list.label.atributo2 = Fecha límite
+anonymous.shout.list.label.atributo3 = Cantidad monetaria
+anonymous.shout.list.label.atributo4 = Importante
 
 anonymous.shout.error.umbral-superado = Umbral de palabras consideradas spam superado
 
-error-atributo1-validacion1 = Validación incorrecta de Atributo1
-error-atributo1-validacion2 = Validación incorrecta de Atributo1
-error-atributo2-validacion = Validación incorrecta de Atributo2
-error-atributo3-validacion-currency = Validación incorrecta de Atributo3
+error-atributo1-validacion1 = Mal patrón
+error-atributo1-validacion2 = Ya existe un identificador con este valor.
+error-atributo2-validacion = La fecha límite no es posterior a una semana
+error-atributo3-validacion-currency = Solo se admite EUR, GBP o USD

@@ -9,14 +9,3 @@
 # they accept any liabilities with respect to them.
 
 
-Esto es Acme-Planner, un proyecto cuya finalidad es poner en práctica los conocimientos 
-adquiridos durante las clases de la asignatura Diseño y Pruebas 2, constituyendo parte
-fundamental del segundo entregable.  
-
-Enlace al repositorio en Github: https://github.com/Francisco-Borrego/Acme-Planner
-
-Credenciales para Clever Cloud:
-- Dirección de correo: fraborcar@alum.us.es
-- Contraseña: contrasenaparadp2
-
-Enlace de la release: https://github.com/Francisco-Borrego/Acme-Planner/releases/tag/3.0

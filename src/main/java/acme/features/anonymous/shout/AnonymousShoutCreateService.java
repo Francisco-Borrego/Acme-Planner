@@ -1,5 +1,6 @@
 package acme.features.anonymous.shout;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Optional;
@@ -51,8 +52,8 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		assert entity != null;
 		assert model != null;
 			
-		request.unbind(entity, model, "author", "text", "info", "sheet.atributo1", 
-			"sheet.atributo2","sheet.atributo3", "sheet.atributo4");
+		request.unbind(entity, model, "author", "text", "info", "sheet.name", 
+			"sheet.deadline","sheet.budget", "sheet.important");
 	}
 		
 	@Override
@@ -61,11 +62,8 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 		
 		Shout result;
 		Date moment;
-
-		//Quizás instanciar el momento??
 		
 		moment = new Date(System.currentTimeMillis() - 1);
-		
 		
 		result = new Shout();
 		result.setMoment(moment);
@@ -85,20 +83,37 @@ public class AnonymousShoutCreateService implements AbstractCreateService<Anonym
 			errors.state(request, !umbralSuperado,"text", "manager.task.error.umbral-superado");
 		}
 		
-		if(!errors.hasErrors("sheet.atributo1")) {
-			final Optional<Sheet> sheet = this.shoutRepository.findSheetByAtributo1(entity.getSheet().getAtributo1());			
-			//errors.state(request, entity.getSheet().getAtributo1().equals(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"))), "sheet.atributo1", "error-atributo1-validacion1");
-			errors.state(request, !sheet.isPresent(), "sheet.atributo1", "error-atributo1-validacion2");
+		//Comprobación del atributo name con la fecha actual
+		if(!errors.hasErrors("sheet.name")) {
+			final Optional<Sheet> sheet = this.shoutRepository.findSheetByName(entity.getSheet().getName());
+			
+			final String name = entity.getSheet().getName();
+			final String dia = name.split("-")[0].substring(0, 2);
+			final String mes = name.split("-")[2].substring(0, 2);
+			final String anyo = "20"+name.split("-")[2].substring(2);
+			
+			final LocalDate currentDay = LocalDate.now();
+			final Boolean diaActual = currentDay.getDayOfMonth()==Integer.valueOf(dia)
+					&& currentDay.getMonthValue()==Integer.valueOf(mes)
+					&& currentDay.getYear()==Integer.valueOf(anyo);
+			
+			errors.state(request, diaActual, "sheet.name", "error-atributo1-validacion1");
+			errors.state(request, !sheet.isPresent(), "sheet.name", "error-atributo1-validacion2");
 		}
 		
-		if(!errors.hasErrors("sheet.atributo2")) {
-			final Date hoy = Calendar.getInstance().getTime();
-			errors.state(request, entity.getSheet().getAtributo2().before(hoy), "sheet.atributo2", "error-atributo2-validacion"); //Mirar si cumple validacion
+		if(!errors.hasErrors("sheet.deadline")) {
+			Calendar calendar;
+			Date deadline;
+			
+			calendar = Calendar.getInstance();
+			calendar.add(Calendar.WEEK_OF_YEAR, 1);
+			deadline = calendar.getTime();
+			errors.state(request, entity.getSheet().getDeadline().after(deadline), "sheet.deadline", "error-atributo2-validacion");
 		}
 		
-		if(!errors.hasErrors("sheet.atributo3")) {
-			final String currency = entity.getSheet().getAtributo3().getCurrency();
-			errors.state(request, currency.equals("USD")||currency.equals("EUR"), "sheet.atributo3", "error-atributo3-validacion-currency");
+		if(!errors.hasErrors("sheet.budget")) {
+			final String currency = entity.getSheet().getBudget().getCurrency();
+			errors.state(request, currency.equals("USD")||currency.equals("EUR")||currency.equals("GBP"), "sheet.budget", "error-atributo3-validacion-currency");
 		}
 	}
 	
