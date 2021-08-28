@@ -1,6 +1,5 @@
 package acme.testing.controlCheck;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -52,17 +51,41 @@ public class AnonymousShoutsCreateTest extends AcmePlannerTest {
 	
 	/*	Feature: un usuario anónimo puede crear gritos
 	 * 	Caso negativo.
-	 * 		Primer update: autor y texto vacío. Información mala URL.
-	 * 		Segundo update: autor superando el máximo de caracteres, texto con umbral de spam superado y mala URL.
-	 * 		Tercer update: autor y texto menor del mínimo de caracteres, y mala URL.
-	 * 		Cuarto update: autor vacío, texto superando el máximo de caracteres y mala URL.
-	 * 		Quinto update: autor vacío, texto con umbral de spam superado y mala URL.
+	 * 		Primer caso: Autor demasiado corto
+	 * 		Segundo cas: Autor demasiado largo (26 letras)
+	 * 		Tercer caso: Autor vacío
+	 * 		Cuarto caso: Texto muy corto (4 caracteres)
+	 * 		Quinto caso: Texto muy largo (101 caracteres)
+	 * 		Sexto caso: Texto vacío
+	 * 		Séptimo caso: Autor y texto vacío
+	 * 		Octavo caso: Mala info (bad URL)
+	 * 		Noveno caso: Mal día en ID
+	 * 		Décimo caso: Mal mes en ID
+	 * 		Undécimo caso: Mal año en ID
+	 * 		Duodécimo caso: Mal patrón de letras/números
+	 * 		Decimotercer caso: ID vacío
+	 * 		Decimocuarto caso: Autor, texto e ID vacíos
+	 * 		Decimoquinto caso: Deadline un día antes de la semana
+	 * 		Decimosexto caso: Deadline en el pasado
+	 * 		Decimoséptimo caso: Mal formato fecha
+	 * 		Decimoctavo caso: Mal formato minutos
+	 * 		Decimonoveno caso: Mal formato horas
+	 * 		Vigésimo caso: Moneda no admitida
+	 * 		Vigesimoprimer caso: No existe el entero
+	 * 		Vigesimosegundo caso: Mal uso de los signos de puntuación
+	 * 		Vigesimotercer caso: Sin deadline
+	 * 		Vigesimocuarto caso: Sin cantidad monetaria
+	 * 		Vigesimoquinto caso: Mala parte decimal en la cantidad monetaria
+	 * 		Vigesimosexto caso: Supera el máximo permitido
+	 * 		Vigesimoséptimp caso: Ni cantidad ni moneda
+	 * 		Vigesimoctavo caso: Sin autor, texto, ID y deadline
+	 * 		Vigesimonoveno caso: Letras en vez de cantidad monetaria
+	 * 		Trigésimo caso: Sin autor, texto, ID, deadline y dinero
 	*/
 	
 	@ParameterizedTest
 	@CsvFileSource(resources = "/anonymous/shout/createNegative.csv", encoding = "utf-8", numLinesToSkip = 1)
 	@Order(20)	
-	@Disabled
 	public void createNegative(final String author, final String text, final String info,
 		final String atributo1, final String atributo2, final String atributo3, final String atributo4) {
 		
